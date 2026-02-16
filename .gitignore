@@ -1,0 +1,21 @@
+# Maven
+**/target/
+**/*.log
+
+# IntelliJ / VSCode
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Spark runtime artifacts
+spark-cluster/**/eventlog/
+spark-cluster/**/data/
+spark-cluster/**/apps/
+
+# Iceberg warehouse (runtime data)
+iceberg-rest/warehouse/
+
