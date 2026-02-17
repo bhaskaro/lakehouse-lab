@@ -1,12 +1,26 @@
+version: "3.8"
+
 services:
-  iceberg-rest:
+
+  iceberg-rest-prod:
     image: tabulario/iceberg-rest:1.5.0
-    container_name: iceberg-rest
-    hostname: iceberg-rest
+    container_name: iceberg-rest-prod
     ports:
       - "8181:8181"
     environment:
-      - CATALOG_WAREHOUSE=file:///opt/warehouse
-      - CATALOG_IO__IMPL=org.apache.iceberg.hadoop.HadoopFileIO
+      - CATALOG_WAREHOUSE=/warehouse/prod
+      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+      - CATALOG_JDBC_URI=jdbc:sqlite:/warehouse/prod.db
     volumes:
-      - ./warehouse:/opt/warehouse
+      - ./warehouse/prod:/warehouse/prod
+
+  iceberg-rest-dev:
+    image: tabulario/iceberg-rest:1.5.0
+    container_name: iceberg-rest-dev
+    ports:
+      - "8182:8181"
+    environment:
+      - CATALOG_WAREHOUSE=/warehouse/dev
+      - CATALOG_JDBC_URI=jdbc:sqlite:/warehouse/dev.db
+    volumes:
+      - ./warehouse/dev:/warehouse/dev

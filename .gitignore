@@ -1,21 +1,47 @@
+############################
 # Maven
+############################
 **/target/
-**/*.log
+*.log
 
-# IntelliJ / VSCode
-.idea/
-.vscode/
-*.iml
+############################
+# Iceberg Warehouse
+############################
+warehouse/
+iceberg-rest/warehouse/
 
-# OS files
+############################
+# Spark runtime
+############################
+eventlog/
+spark-warehouse/
+metastore_db/
+derby.log
+
+############################
+# MinIO / S3 data
+############################
+data/
+
+############################
+# OS
+############################
 .DS_Store
 Thumbs.db
 
-# Spark runtime artifacts
-spark-cluster/**/eventlog/
-spark-cluster/**/data/
-spark-cluster/**/apps/
+############################
+# IntelliJ
+############################
+.idea/
+*.iml
 
-# Iceberg warehouse (runtime data)
-iceberg-rest/warehouse/
+############################
+# VS Code
+############################
+.vscode/
 
+############################
+# Temp
+############################
+*.swp
+*.tmp
